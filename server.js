@@ -8,17 +8,8 @@ mongoose.connect('mongodb://localhost:27017/nodejs-api', {useUnifiedTopology: tr
 
 requireDir('./src/models/');
 
-const Product = mongoose.model('Product');
-
 const app = express();
 
-app.get('/', (req, res)=>{
-    Product.create({title:"React-Native",
-    description: "Build Native Apps with React",
-    url:"https://github.com/facebook/react-native"
-});
-
-    res.send('Hello Jaoo');
-});
+app.use('/api', require('./src/routes'));
 
 app.listen(3002);
